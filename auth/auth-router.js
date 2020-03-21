@@ -2,6 +2,8 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Users = require("../users/users-model.js");
+const restrict = require("../middleware/restricted-middleware");
+
 
 // api/auth/register ADD VALIDATION so need to include name, password and departement
 
@@ -60,5 +62,16 @@ router.post("/login", async (req, res, next) => {
     next(error);
   }
 });
+
+
+router.get("/protected", restrict(), async (req, res, next) => {
+    try {
+      res.json({
+        message: "Welcome to this page, You are Authorised"
+      });
+    } catch (error) {
+      next(error);
+    }
+  });
 
 module.exports = router;
