@@ -1,0 +1,29 @@
+{
+  "name": "node-auth3-project",
+  "version": "1.0.0",
+  "description": "## Topics",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon -r dotenv/config index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hesterrk/node-auth3-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hesterrk/node-auth3-project/issues"
+  },
+  "homepage": "https://github.com/hesterrk/node-auth3-project#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.21.3"
+  }
+}
