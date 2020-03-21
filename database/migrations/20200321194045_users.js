@@ -4,7 +4,7 @@ exports.up = async function(knex) {
         table.increments();
         table.text("username").notNull().unique()
         table.text("password").notNull()
-        table.text("department").notNull()
+        table.enum("department", ["finance", "resources", "catering"]).notNull()
 
 
     });
