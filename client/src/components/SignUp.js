@@ -1,7 +1,11 @@
 import React from "react";
+import { postSignUp, changeSignUpInput } from "./actions/actionCreators";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 
-function SignUp() {
+
+function SignUp(props) {
 
     return (
         <div>
