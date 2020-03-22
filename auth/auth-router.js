@@ -3,11 +3,12 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Users = require("../users/users-model.js");
 const restrict = require("../middleware/restricted-middleware");
+const validateUserInputs = require("../middleware/validateUserInputs")
 
 
 // api/auth/register ADD VALIDATION so need to include name, password and departement
 
-router.post("/register", async (req, res, next) => {
+router.post("/register", validateUserInputs(), async (req, res, next) => {
   try {
     const { username, password, department } = req.body;
     const user = await Users.findBy({ username }).first();
@@ -40,7 +41,7 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
-router.post("/login", async (req, res, next) => {
+router.post("/login", validateUserInputs(), async (req, res, next) => {
   const authError = {
     message: "Invalid credentials"
   };
