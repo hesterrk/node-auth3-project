@@ -20,7 +20,7 @@ function SignUp(props) {
       password: props.password,
       department: props.department
     });
-    history.push("/login");
+    history.push("/users");
   };
 
   if (props.isLoading) {
@@ -60,7 +60,7 @@ function SignUp(props) {
         <label>
           Department: <br></br>
           <input
-            type="password"
+            type="text"
             name="department"
             placeholder="Please confirm department"
             value={props.department}

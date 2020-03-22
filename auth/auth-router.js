@@ -12,6 +12,7 @@ router.post("/register", async (req, res, next) => {
     const { username, password, department } = req.body;
     const user = await Users.findBy({ username }).first();
     if (user) {
+      console.log(user)
       return res.status(409).json({
         message: "Username is already taken, please use another one"
       });
@@ -23,7 +24,17 @@ router.post("/register", async (req, res, next) => {
       }
     }
 
-    res.status(201).json(await Users.add(req.body));
+    const newUser = await Users.add(req.body)
+    if(newUser) {
+      console.log(newUser)
+    const payload = {
+      userId: newUser.id,
+      department: newUser.department
+    };
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET);
+    return res.status(201).json({newUser, token});
+  }
   } catch (error) {
     next(error);
   }

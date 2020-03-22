@@ -3,8 +3,8 @@ import './App.css';
 import { Route, Switch } from "react-router-dom";
 import Login from './components/Login';
 import Home from './components/Home'
-import PrivateRoute from './components/PrivateRoute';
 import SignUp from './components/SignUp';
+import PrivateRoute from './components/PrivateRoute';
 import Users from './components/Users';
 
 function App() {

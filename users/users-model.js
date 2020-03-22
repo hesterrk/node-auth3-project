@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   add,
+  find,
   findFinance,
   findResources,
   findBy,
@@ -10,14 +11,16 @@ module.exports = {
   remove
 };
 
+function find() {
+  return db("users");
+}
+
 function findFinance() {
-  return db("users")
-  .where("department", "finance");
+  return db("users").where("department", "finance" || "resources");
 }
 
 function findResources() {
-  return db("users")
-  .where("department", "resources");
+  return db("users").where("department", "resources");
 }
 
 function findBy(filter) {

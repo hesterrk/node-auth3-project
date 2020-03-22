@@ -5,24 +5,43 @@ const Users = require("./users-model.js");
 
 //Add restricted x2 middleware: x1 to restrict based on departement x1 verifies token when clients sends back
 
+//all authorised users with token 
+router.get("/", restrict(), async (req, res) => {
+  try {
+    res.json(await Users.find());
+  } catch (error) {
+    next(error);
+  }
+});
+
 //shows users in finance dep
-router.get("/finance", restrict(), restrictDepartment("finance"), async (req, res) => {
-  try {
-    res.json(await Users.findFinance());
-  } catch (error) {
-    next(error);
+router.get(
+  "/finance",
+  restrict(),
+  restrictDepartment("finance"),
+  async (req, res) => {
+    try {
+      res.json(await Users.findFinance());
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
-//shows users in resources dep 
+//shows users in resources dep
 
-router.get("/resources", restrict(), restrictDepartment("resources"), async (req, res) => {
-  try {
-    res.json(await Users.findResources());
-  } catch (error) {
-    next(error);
+router.get(
+  "/resources",
+  restrict(),
+  restrictDepartment("resources"),
+  async (req, res) => {
+    try {
+      res.json(await Users.findResources());
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 router.get("/:id", async (req, res, next) => {
   try {
