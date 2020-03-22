@@ -16,7 +16,7 @@ export const registerReducer = (state = initialValues, action) => {
     case types.REGISTER_INPUT_CHANGE:
       return {
         ...state,
-        signUpInput: {
+        registerInput: {
           ...state.registerInput,
           [action.payload.inputName]: action.payload.inputValue
         },
