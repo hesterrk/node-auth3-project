@@ -6,7 +6,7 @@ const restrict = require("../middleware/restricted-middleware");
 const validateUserInputs = require("../middleware/validateUserInputs")
 
 
-// api/auth/register ADD VALIDATION so need to include name, password and departement
+// api/auth/register 
 
 router.post("/register", validateUserInputs(), async (req, res, next) => {
   try {
